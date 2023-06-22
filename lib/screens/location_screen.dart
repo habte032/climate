@@ -15,7 +15,7 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   WeatherModel weather=new WeatherModel();
   late double temp;
-  late String city;
+  late String cityName;
   late String weatherIcon;
   late String message;
 
@@ -28,7 +28,7 @@ class _LocationScreenState extends State<LocationScreen> {
      setState(() {
        if(weatherdata==null){
          temp=18.2;
-         city='Adiss Ababa';
+         cityName='Adiss Ababa';
          weatherIcon='☁️';
          message='You\'ll need 🧣 and 🧤';
        }
@@ -37,7 +37,7 @@ class _LocationScreenState extends State<LocationScreen> {
          temp=temp-273.15;
          temp=double.parse(temp.toStringAsFixed(1));
          var condition=weatherdata['weather'][0]['id'];
-         city=weatherdata['name'];
+         cityName=weatherdata['name'];
          print(temp);
          weatherIcon=weather.getWeatherIcon(condition);
          message=weather.getMessage(temp);
@@ -69,11 +69,9 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   TextButton(
-                    onPressed: () {
-                      setState(() {
-                        var weatherdata=weather.getLocationWeathe();
+                    onPressed: () async{
+                        var weatherdata= await weather.getLocationWeathe();
                         update(weatherdata);
-                      });
                     },
                     child: Icon(
                       Icons.near_me,
@@ -81,9 +79,13 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder:
+                    onPressed: ()async {
+                     var typedName= await Navigator.push(context, MaterialPageRoute(builder:
                       (context)=>CityScreen()));
+                     if(typedName!=null){
+                       var weatherdata=await  weather.getCityWeather(typedName);
+                       update(weatherdata);
+                     }
                     },
                     child: Icon(
                       Icons.location_city,
@@ -110,7 +112,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "$message in $city!",
+                  "$message in $cityName!",
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
