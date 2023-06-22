@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/weather.dart';
 import '../utilities/constants.dart';
+import 'city_screen.dart';
 
 class LocationScreen extends StatefulWidget {
 
@@ -80,7 +81,10 @@ class _LocationScreenState extends State<LocationScreen> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder:
+                      (context)=>CityScreen()));
+                    },
                     child: Icon(
                       Icons.location_city,
                       size: 50.0,
@@ -119,9 +123,3 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 }
 
-// double temp=decodeData['main']['temp'];
-// int condition=decodeData['weather'][0]['id'];
-// String city=decodeData['name'];
-// print(city);
-// print(temp);
-// print(condition);
