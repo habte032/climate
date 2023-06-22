@@ -29,8 +29,8 @@ class _LocationScreenState extends State<LocationScreen> {
        if(weatherdata==null){
          temp=18.2;
          cityName='Adiss Ababa';
-         weatherIcon='☁️';
-         message='You\'ll need 🧣 and 🧤';
+         weatherIcon='🤷';
+         message='Bring a 🧥 just in case';
        }
       else{
          temp=weatherdata['main']['temp'];
@@ -38,7 +38,7 @@ class _LocationScreenState extends State<LocationScreen> {
          temp=double.parse(temp.toStringAsFixed(1));
          var condition=weatherdata['weather'][0]['id'];
          cityName=weatherdata['name'];
-         print(temp);
+        // print(temp);
          weatherIcon=weather.getWeatherIcon(condition);
          message=weather.getMessage(temp);
        }
