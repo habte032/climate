@@ -38,7 +38,7 @@ class _CityScreenState extends State<CityScreen> {
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
                   onChanged: (value){
-                    print(value);
+
                   },
                   style: TextStyle(
                       color: Colors.black
