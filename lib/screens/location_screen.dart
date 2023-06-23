@@ -114,18 +114,21 @@ class _LocationScreenState extends State<LocationScreen> {
               SizedBox(height: 100,),
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      '$temp°',
-                      style: kTempTextStyle,
-                    ),
-                    Text(
-                      '$weatherIcon',
-                      style: kConditionTextStyle,
-                    ),
-                  ],
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "$temp",
+                        style: kTempTextStyle
+                      ),
+                      TextSpan(text: " "),
+                      TextSpan(
+                        text: "$weatherIcon",
+                        style: kConditionTextStyle,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Center(
