@@ -15,8 +15,8 @@ class _CityScreenState extends State<CityScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/city_background.jpg'),
-            fit: BoxFit.cover,
+            image: AssetImage('images/city_background.png'),
+            fit: BoxFit.fill,
           ),
         ),
         constraints: BoxConstraints.expand(),
@@ -31,7 +31,7 @@ class _CityScreenState extends State<CityScreen> {
                   },
                   child: Icon(
                     Icons.arrow_back_ios,
-                    size: 50.0,
+                    size: 30.0,
                   ),
                 ),
               ),
@@ -41,11 +41,15 @@ class _CityScreenState extends State<CityScreen> {
                   onChanged: (value){
                     cityName=value;
                   },
+                  onSubmitted: (value){
+                    cityName=value;
+                    Navigator.pop(context,cityName);
+                  },
                   style: TextStyle(
                       color: Colors.black
                   ),
                   decoration: InputDecoration(
-                      fillColor: Colors.white,
+                      fillColor: Color(0xff2b2b2b),
                       filled: true,
                       icon: Icon(
                         Icons.location_city,color: Colors.white,
