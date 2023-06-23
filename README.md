@@ -13,7 +13,6 @@ This is a simple weather app developed using Flutter. It allows users to view th
 ![Screenshot_20230624-010837](https://github.com/habte032/climate/assets/101426508/ecf5738d-2b46-4402-b250-bad37b20beab)
 
 ## Getting Started
-To run this app on your device or emulator, follow these steps:
-  Clone this repository to your local machine:
-  
+To run this app on your device Clone this repository to your local machine:
+  ```bash
    git clone https://github.com/your-username/weather-app.git
