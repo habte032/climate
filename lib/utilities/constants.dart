@@ -9,11 +9,11 @@ const kTempTextStyle = TextStyle(
 const kMessageTextStyle = TextStyle(
 
   fontFamily: 'Spartan MB',
-  fontSize: 40.0,
+  fontSize: 25.0,
 );
 
 const kButtonTextStyle = TextStyle(
-
+  color: Colors.white,
   fontSize: 25.0,
   fontFamily: 'Spartan MB',
 );
