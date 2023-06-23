@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../services/weather.dart';
 import '../utilities/constants.dart';
 import 'city_screen.dart';
@@ -16,8 +17,11 @@ class _LocationScreenState extends State<LocationScreen> {
   WeatherModel weather=new WeatherModel();
   late double temp;
   late String cityName;
+  late String country;
   late String weatherIcon;
   late String message;
+   var description;
+   var icon;
 
 @override
   void initState() {
@@ -29,15 +33,20 @@ class _LocationScreenState extends State<LocationScreen> {
        if(weatherdata==null){
          temp=18.2;
          cityName='Adiss Ababa';
-         weatherIcon='🤷';
-         message='Bring a 🧥 just in case';
+         weatherIcon='';
+         message='';
+         description='';
+         country='ET';
        }
       else{
+         description=weatherdata['weather'][0]['description'];
+         icon=weatherdata['weather'][0]['icon'];
          temp=weatherdata['main']['temp'];
          temp=temp-273.15;
          temp=double.parse(temp.toStringAsFixed(1));
          var condition=weatherdata['weather'][0]['id'];
          cityName=weatherdata['name'];
+         country=weatherdata['sys']['country'];
         // print(temp);
          weatherIcon=weather.getWeatherIcon(condition);
          message=weather.getMessage(temp);
@@ -53,8 +62,8 @@ class _LocationScreenState extends State<LocationScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/location_background.jpg'),
-            fit: BoxFit.cover,
+            image: AssetImage('images/location_background.png'),
+            fit: BoxFit.fill,
             colorFilter: ColorFilter.mode(
                 Colors.white.withOpacity(0.8), BlendMode.dstATop),
           ),
@@ -62,7 +71,6 @@ class _LocationScreenState extends State<LocationScreen> {
         constraints: BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Row(
@@ -75,7 +83,8 @@ class _LocationScreenState extends State<LocationScreen> {
 
                     },
                     child: Icon(
-                      Icons.near_me,
+                      FontAwesomeIcons.locationArrow,
+                      color: Colors.white,
                       size: 50.0,
                     ),
                   ),
@@ -89,15 +98,18 @@ class _LocationScreenState extends State<LocationScreen> {
                      }
                     },
                     child: Icon(
-                      Icons.location_city,
+                      Icons.location_city_outlined,
+                      color: Colors.white,
                       size: 50.0,
                     ),
                   ),
                 ],
               ),
+              SizedBox(height: 150,),
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
                       '$temp°',
@@ -110,11 +122,17 @@ class _LocationScreenState extends State<LocationScreen> {
                   ],
                 ),
               ),
+              Center(
+                child: Text(
+                  '$cityName, $country',style: TextStyle(fontSize: 35),
+                ),
+              ),
+              SizedBox(height: 200,),
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "$message in $cityName!",
-                  textAlign: TextAlign.right,
+                  "$message and $description in $cityName!",
+                  textAlign: TextAlign.center,
                   style: kMessageTextStyle,
                 ),
               ),
