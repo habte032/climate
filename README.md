@@ -15,5 +15,5 @@ This is a simple weather app developed using Flutter. It allows users to view th
 ## Getting Started
 To run this app on your device or emulator, follow these steps:
   Clone this repository to your local machine:
-  '''
+  
    git clone https://github.com/your-username/weather-app.git
