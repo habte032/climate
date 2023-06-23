@@ -76,36 +76,42 @@ class _LocationScreenState extends State<LocationScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  TextButton(
-                    onPressed: () async{
-                        var weatherdata= await weather.getLocationWeathe();
-                        update(weatherdata);
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: TextButton(
+                      onPressed: () async{
+                          var weatherdata= await weather.getLocationWeathe();
+                          update(weatherdata);
 
-                    },
-                    child: Icon(
-                      FontAwesomeIcons.locationArrow,
-                      color: Colors.white,
-                      size: 50.0,
+                      },
+                      child: Icon(
+                        FontAwesomeIcons.locationArrow,
+                        color: Color(0xffd1ac9a),
+                        size: 50.0,
+                      ),
                     ),
                   ),
-                  TextButton(
-                    onPressed: ()async {
-                     var typedName= await Navigator.push(context, MaterialPageRoute(builder:
-                      (context)=>CityScreen()));
-                     if(typedName!=null){
-                       var weatherdata=await  weather.getCityWeather(typedName);
-                       update(weatherdata);
-                     }
-                    },
-                    child: Icon(
-                      Icons.location_city_outlined,
-                      color: Colors.white,
-                      size: 50.0,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextButton(
+                      onPressed: ()async {
+                       var typedName= await Navigator.push(context, MaterialPageRoute(builder:
+                        (context)=>CityScreen()));
+                       if(typedName!=null){
+                         var weatherdata=await  weather.getCityWeather(typedName);
+                         update(weatherdata);
+                       }
+                      },
+                      child: Icon(
+                        Icons.location_city_outlined,
+                        color: Color(0xffd1ac9a),
+                        size: 50.0,
+                      ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 150,),
+              SizedBox(height: 100,),
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
                 child: Row(
@@ -127,11 +133,11 @@ class _LocationScreenState extends State<LocationScreen> {
                   '$cityName, $country',style: TextStyle(fontSize: 35),
                 ),
               ),
-              SizedBox(height: 200,),
+              SizedBox(height: 100,),
               Padding(
-                padding: EdgeInsets.only(right: 15.0),
+                padding: EdgeInsets.all( 15.0),
                 child: Text(
-                  "$message and $description in $cityName!",
+                  "$message and there is $description in $cityName!",
                   textAlign: TextAlign.center,
                   style: kMessageTextStyle,
                 ),
