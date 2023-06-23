@@ -2,7 +2,8 @@ import 'package:climate/services/location.dart';
 import '../services/networking.dart';
 
 const apiKey='';
-const url='';
+const url='https://api.openweathermap.org/data/2.5/weather';
+
 
 class WeatherModel {
 
@@ -44,15 +45,24 @@ class WeatherModel {
     }
   }
 
-  String getMessage(double temp) {
-    if (temp > 25) {
-      return 'It\'s 🍦 time';
-    } else if (temp > 20) {
-      return 'Time for shorts and 👕';
-    } else if (temp < 10) {
-      return 'You\'ll need 🧣 and 🧤';
-    } else {
-      return 'Bring a 🧥 just in case';
+    String getMessage(double temp) {
+      if (temp > 40) {
+        return "It's extremely hot";
+      } else if (temp > 30) {
+        return "It's hot outside";
+      } else if (temp > 25) {
+        return "The weather is warm";
+      } else if (temp > 20) {
+        return "It's a pleasant day";
+      } else if (temp > 15) {
+        return "The weather is mild";
+      } else if (temp > 10) {
+        return "It's a cool day";
+      } else if (temp >= 5) {
+        return "It's chilly outside";
+      } else {
+        return "It's very cold";
+      }
     }
-  }
+
 }
