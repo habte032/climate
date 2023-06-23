@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 
 const kTempTextStyle = TextStyle(
   fontFamily: 'Spartan MB',
-  fontSize: 60.0,
+  fontSize: 80.0,
+  fontWeight: FontWeight.bold
 );
 
 const kMessageTextStyle = TextStyle(
+
   fontFamily: 'Spartan MB',
   fontSize: 40.0,
 );
 
 const kButtonTextStyle = TextStyle(
+
   fontSize: 25.0,
   fontFamily: 'Spartan MB',
 );
