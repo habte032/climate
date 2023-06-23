@@ -31,9 +31,13 @@ class _CityScreenState extends State<CityScreen> {
                   },
                   child: Icon(
                     Icons.arrow_back_ios,
+                    color: Colors.black,
                     size: 30.0,
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 100,
               ),
               Container(
                 padding: EdgeInsets.all(20.0),
@@ -49,28 +53,37 @@ class _CityScreenState extends State<CityScreen> {
                       color: Colors.black
                   ),
                   decoration: InputDecoration(
-                      fillColor: Color(0xff2b2b2b),
+                      fillColor: Colors.white,
                       filled: true,
-                      icon: Icon(
-                        Icons.location_city,color: Colors.white,
-                      ),
+                      prefixIcon: Icon(Icons.location_city_rounded,),
+                      prefixIconColor: Colors.black,
                       hintText: 'Enter City' ,
                       hintStyle: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.black,
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(30),
+
                       )
                   ),
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context,cityName);
-                },
-                child: Text(
-                  'Get Weather',
-                  style: kButtonTextStyle,
+              Center(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+                  decoration:  BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color(0xffd1ac9a),
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pop(context,cityName);
+                    },
+                    child: Text(
+                      'Get Weather',
+                      style: kButtonTextStyle,
+                    ),
+                  ),
                 ),
               ),
             ],
